@@ -27,9 +27,9 @@ In this project, you'll find basic configuration for VPC and EC2 services that w
       keyName: 'machine-01',
 ```
 * The used Machine Image is Ubuntu
-* The Instance Type as t2.micro which is acceptable for basic processes
+* The Instance Type as 't2.micro' which is acceptable for basic processes
 * The Security Group is defined for ssh, http, https connections
-* The Key-Pair is created via aws console for ssh connection with local pc
+* The Key-Pair is created via AWS-Console for ssh connection with local pc
 
 
 
