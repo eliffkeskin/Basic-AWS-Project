@@ -7,15 +7,15 @@ In this project, you'll find basic configuration for VPC and EC2 services that w
       subnetConfiguration: [
         {
           cidrMask: 24,
-          name: 'Ingress',
+          name: 'Subnet01',
           subnetType: aws_ec2.SubnetType.PUBLIC,
         }
       ],
-      maxAzs: 1
+      maxAzs: 2
 ```
 * 16 cidr block for VPC and 24 cidrMask for VPC-Subnet
 * Subnet type as 'PUBLIC' which means VPC has internet gateway(igw) for connecting to internet
-* The count of subnet networks maximum availability zones is 1
+* The count of subnet networks maximum availability zones is 2
 ## 2. EC2 Instance Configuration
 
 ```typescript
@@ -30,6 +30,28 @@ In this project, you'll find basic configuration for VPC and EC2 services that w
 * The Instance Type as 't2.micro' which is acceptable for basic processes
 * The Security Group is defined for ssh, http, https connections
 * The Key-Pair is created via AWS-Console for ssh connection with local pc
+
+## 3. ECR Configuration
+```typescript
+const repo = new aws_ecr.Repository(this, 'Repo', {
+            repositoryName: "repo",
+            removalPolicy: RemovalPolicy.DESTROY,    
+        });
+
+        new CfnOutput(this, 'RepoARN', {
+            exportName: "RepoARN",
+            value: repo.repositoryArn,
+        });
+        
+        new CfnOutput(this, 'RepoName', {
+            exportName: "RepoName",
+            value: repo.repositoryName,
+        });
+```
+* ECR Repository created for keeping images in there.
+* After stack deletion this repo will be also deleted.
+* If I want to use this repository in other services, I export this repo with **CfnOutput** argument.
+
 
 
 
