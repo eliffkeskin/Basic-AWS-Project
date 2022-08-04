@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { BasicProjectStack } from '../lib/basic-project-stack';
 import { getConfig } from '../lib/config';
 import { VPCStack } from '../lib/vpc';
 import { EC2Stack } from '../lib/ec2/ec2-stack';
