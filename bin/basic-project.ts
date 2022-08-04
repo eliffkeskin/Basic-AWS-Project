@@ -13,7 +13,6 @@ const env = {
     region: conf.region,
 };
 
-//new BasicProjectStack(app, 'BasicProjectStack', {});
 new VPCStack(app, 'VPCStack', { env });
 new EC2Stack (app, "EC2Stack", { env });
 new ECRStack(app, "ECRStack", { env });
